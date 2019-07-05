@@ -89,14 +89,21 @@ var AppComponent = /** @class */ (function () {
     function AppComponent() {
         this.options = {
             layers: [
-                Object(leaflet__WEBPACK_IMPORTED_MODULE_2__["tileLayer"])('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-                })
+                Object(leaflet__WEBPACK_IMPORTED_MODULE_2__["tileLayer"])('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
             ],
             zoom: 18,
             center: Object(leaflet__WEBPACK_IMPORTED_MODULE_2__["latLng"])(8.524139, 76.936638)
         };
     }
+    //  options = {
+    //     layers: [
+    //       tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    //         attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    //       })
+    //     ],
+    //     zoom: 18,
+    //     center: latLng(8.524139, 76.936638)
+    //   };
     // drawOptions = {
     //     position: 'topleft',
     //     draw: {
@@ -113,6 +120,7 @@ var AppComponent = /** @class */ (function () {
     //get the current location 
     AppComponent.prototype.onMapReady = function (map) {
         function onLocationFound(e) {
+            // let path=[];
             leaflet__WEBPACK_IMPORTED_MODULE_2__["marker"](e.latlng).on('dragend', function (e) {
                 jquery__WEBPACK_IMPORTED_MODULE_3__('#latitude').val(e.target.getLatLng().lat);
                 jquery__WEBPACK_IMPORTED_MODULE_3__('#longitude').val(e.target.getLatLng().lng);
@@ -121,6 +129,7 @@ var AppComponent = /** @class */ (function () {
             jquery__WEBPACK_IMPORTED_MODULE_3__('#latitude').val(e.latlng.lat);
             jquery__WEBPACK_IMPORTED_MODULE_3__('#longitude').val(e.latlng.lng);
             console.log(e.latlng.lat + ',' + e.latlng.lng);
+            //console.log(path.push(e.latlng.lat + ',' + e.latlng.lng));
         }
         function onLocationError(e) {
             console.log(e.message);
