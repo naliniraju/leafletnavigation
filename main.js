@@ -61,17 +61,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var leaflet_dist_images_marker_shadow_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! leaflet/dist/images/marker-shadow.png */ "./node_modules/leaflet/dist/images/marker-shadow.png");
-/* harmony import */ var leaflet_dist_images_marker_shadow_png__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(leaflet_dist_images_marker_shadow_png__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var leaflet_dist_images_marker_icon_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! leaflet/dist/images/marker-icon.png */ "./node_modules/leaflet/dist/images/marker-icon.png");
-/* harmony import */ var leaflet_dist_images_marker_icon_png__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(leaflet_dist_images_marker_icon_png__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var leaflet_draw__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! leaflet-draw */ "./node_modules/leaflet-draw/dist/leaflet.draw.js");
+/* harmony import */ var leaflet_draw__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(leaflet_draw__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
 
 
+// import 'leaflet/images/marker-shadow.png';
+// import 'leaflet/images/marker-icon.png';
 
-
+var iconRetinaUrl = 'assets/leaflet/images/marker-icon-2x.png';
+var iconUrl = 'assets/leaflet/images/marker-icon.png';
+var shadowUrl = 'assets/leaflet/images/marker-shadow.png';
+var iconDefault = leaflet__WEBPACK_IMPORTED_MODULE_2__["icon"]({
+    iconRetinaUrl: iconRetinaUrl,
+    iconUrl: iconUrl,
+    shadowUrl: shadowUrl,
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    tooltipAnchor: [16, -28],
+    shadowSize: [41, 41]
+});
+leaflet__WEBPACK_IMPORTED_MODULE_2__["Marker"].prototype.options.icon = iconDefault;
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
         this.options = {
@@ -83,20 +96,20 @@ var AppComponent = /** @class */ (function () {
             zoom: 18,
             center: Object(leaflet__WEBPACK_IMPORTED_MODULE_2__["latLng"])(8.524139, 76.936638)
         };
-        this.drawOptions = {
-            position: 'topleft',
-            draw: {
-                marker: {
-                    icon: leaflet__WEBPACK_IMPORTED_MODULE_2__["icon"]({
-                        iconSize: [25, 41],
-                        iconAnchor: [13, 41],
-                        iconUrl: '../../assets/marker-icon.png',
-                        shadowUrl: '../../assets/marker-shadow.png'
-                    })
-                }
-            }
-        };
     }
+    // drawOptions = {
+    //     position: 'topleft',
+    //     draw: {
+    //         marker: {
+    //             icon: L.icon({
+    //                 iconSize: [25, 41],
+    //                 iconAnchor: [13, 41],
+    //                 iconUrl: '/assets/marker-icon.png',
+    //                 shadowUrl: '/assets/marker-shadow.png'
+    //             })
+    //         }
+    //     }
+    // };
     //get the current location 
     AppComponent.prototype.onMapReady = function (map) {
         function onLocationFound(e) {
@@ -114,7 +127,7 @@ var AppComponent = /** @class */ (function () {
         }
         map.on('locationfound', onLocationFound);
         map.on('locationerror', onLocationError);
-        map.locate({ setView: true, watch: true, maxZoom: 16 });
+        map.locate({ setView: true, watch: true, maxZoom: 18 });
     };
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
